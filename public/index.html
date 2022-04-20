@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js" integrity="sha512-RNLkV3d+aLtfcpEyFG8jRbnWHxUqVZozacROI4J2F1sTaDqo1dPQYs01OMi1t1w9Y2FdbSCDSQ2ZVdAC8bzgAg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/socket.io/socket.io.js"></script> 
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Formulario ingreso de productos</h1>
+    <form id="formulario">
+        <input type="text" placeholder="Nombre del productos..." name="title">
+        <input type="number" placeholder="Precio..." name="price">
+        <input type="text" placeholder="Imagen del producto..." name="thumbnail">
+        <button>Enviar</button>
+    </form>
+    <div id="output"> <!-- div donde va compilado el handle --> </div>
+    <h1>Centro de mensajes</h1>
+    <h3>Nombre</h3>
+    <input type="text" name="inputUserName" id="inputUserName" placeholder="Ingrese un nombre de usuario">
+    <h3>Mensaje</h3>
+    <div id="cajaIngresarMensaje">
+        <input type="text" name="textToShow" id="textToShow" placeholder="Ingrese un mensaje">
+        <button id="textButton">Enviar</button>
+    </div>
+    <button id="mensajesAnteriores">Mostrar mensajes anteriores</button>
+    <div id="mensajes"></div>
+    <!-- esto capaz me sirve para cuando recien entra el cliente, pero sino no le encuentro uso -->
+    <script id="entry-template" type="text/x-handlebars-template"> <!-- script de contenido del handlebars -->
+        <div class="entry">
+            <h1>{{title}}</h1>
+            <table>
+                <thead>
+                    <th>Title</th>
+                    <th>Price</th>
+                    <th>Thumbnail</th>
+                </thead>
+                {{#each products}}
+                    <tbody>
+                        <td>{{title}}</td>
+                        <td>{{price}}</td>
+                        <td>{{thumbnail}}</td>
+                    </tbody>
+                {{/each}}
+            </table>
+        </div>
+    </script>
+    <script src="index.js"></script>
+    
+</body>
+</html>
